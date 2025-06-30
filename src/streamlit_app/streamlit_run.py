@@ -1,6 +1,12 @@
 import streamlit as st
 from typing import List
-from utils import get_team_images, TEAM_IMAGES, IMG_LENA, IMG_CLARA, IMG_SEYMA, IMG_AYLIN, IMG_PAULINA, IMG_VIVIANE, IMG_ANN_KATHRIN, IMG_LEONIE, IMG_LOUISA, IMG_NADINE, IMG_ISABELLE, IMG_HANNAH, IMG_PLACEHOLDER
+from utils import (
+    get_team_images, TEAM_IMAGES,
+    IMG_LENA, IMG_CLARA, IMG_SEYMA, IMG_AYLIN, IMG_PAULINA, IMG_VIVIANE,
+    IMG_ANN_KATHRIN, IMG_LEONIE, IMG_LOUISA, IMG_NADINE, IMG_ISABELLE, IMG_HANNAH, IMG_PLACEHOLDER
+)
+import pandas as pd
+from pathlib import Path
 
 
 IMAGE_NAME_MAP: dict[str, str] = {
@@ -19,20 +25,16 @@ IMAGE_NAME_MAP: dict[str, str] = {
     IMG_PLACEHOLDER: "TBA",
 }
 
-
 class Gui:
     @staticmethod
     def run_streamlit():
-        st.set_page_config(page_title="Der Bachelor Game", layout="wide")
+        st.set_page_config(page_title="Der Bachelor", layout="wide")
 
         st.markdown(
-            """
-            <style>
-            /* Background gradient */
+            """<style>
             [data-testid="stAppViewContainer"] {
-                background: linear-gradient(to right bottom, #ffffff, #ffcccc); /* White to soft red */
+                background: linear-gradient(to right bottom, #ffffff, #ffcccc);
             }
-            /* Tab styles */
             [data-baseweb="tab"] {
                 background-color: #ffb3d9;
                 color: #880e4f;
@@ -45,7 +47,6 @@ class Gui:
                 background-color: #880e4f;
                 color: white;
             }
-            /* Button styles */
             .stButton>button {
                 background-color: #f06292;
                 color: white;
@@ -57,8 +58,7 @@ class Gui:
             .stButton>button:hover {
                 background-color: #ec407a;
             }
-            </style>
-            """,
+            </style>""",
             unsafe_allow_html=True,
         )
 
@@ -66,7 +66,28 @@ class Gui:
 
         with tabs[0]:
             st.header("Scoreboard")
-            st.info("Scoreboard content will go here.")
+            try:
+                base_path = Path(__file__).resolve().parents[1]
+                scores_df: pd.DataFrame = pd.read_csv(base_path / "scores.csv")
+                scores_df = scores_df.sort_values("total_points", ascending=False).reset_index(drop=True)
+                if not scores_df.empty:
+                    max_pts = scores_df.loc[0, "total_points"]
+                    st.subheader("Points Overview")
+                    for row in scores_df.itertuples():
+                        name = row.name
+                        pts = row.total_points
+                        rel = pts / max_pts if max_pts > 0 else 0
+                        cols = st.columns([1, 6, 1])
+                        cols[0].write(name)
+                        bar_html = (
+                            f"<div style='background:#eee;border-radius:0.25rem;'>"
+                            f"<div style='width:{rel*100}%;background:#f06292;height:1.5rem;border-radius:0.25rem;'>"
+                            f"</div></div>"
+                        )
+                        cols[1].markdown(bar_html, unsafe_allow_html=True)
+                        cols[2].write(int(pts))
+            except Exception as e:
+                st.error(f"Failed to load scores.csv: {e}")
 
         with tabs[1]:
             st.header("Timeline")
@@ -77,19 +98,16 @@ class Gui:
             st.info("Extrapoints content will go here.")
 
         with tabs[3]:
-            st.header(" ")
+            st.header("Teams")
             persons: List[str] = list(TEAM_IMAGES.keys())
-            if "team_idx" not in st.session_state:
-                st.session_state["team_idx"] = 0
+            default_idx = st.session_state.get("team_idx", 0)
+            selected_person = st.selectbox(
+                "Choose a player:", persons, index=default_idx, key="team_select"
+            )
+            st.session_state["team_idx"] = persons.index(selected_person)
 
-            button_cols = st.columns(len(persons), gap="small")
-            for idx, person in enumerate(persons):
-                if button_cols[idx].button(person, key=f"person_{idx}"):
-                    st.session_state["team_idx"] = idx
-
-            selected_person = persons[st.session_state["team_idx"]]
+            st.subheader(f"{selected_person}'s Team")
             images = get_team_images(selected_person)
-
             for row in range(2):
                 cols_img = st.columns(3)
                 for col_idx in range(3):

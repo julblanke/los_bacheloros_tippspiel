@@ -1,0 +1,23 @@
+[project]
+name = "los-bacheleros-tippspiel"
+authors = [
+    {name = "Julian Blanke <julian-blanke@gmx.de>"}
+]
+version = "0.1.0"
+description = "Some fun project"
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "streamlit>=1.46.1",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+packages = [
+    { include = "streamlit_app", from = "src" },
+]
