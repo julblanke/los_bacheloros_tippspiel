@@ -4,16 +4,13 @@ from pathlib import Path
 
 
 def render_scoreboard() -> None:
-    st.header("Scoreboard")
     base_path = Path(__file__).resolve().parents[1]
     scores_path = base_path / "scores.csv"
     try:
         scores_df: pd.DataFrame = pd.read_csv(scores_path)
         scores_df = scores_df.sort_values("total_points", ascending=False).reset_index(drop=True)
 
-        st.markdown(
-            """
-            <style>
+        st.markdown("""<style>
             .card {
                 background: rgba(255,255,255,0.95);
                 padding: 1rem;
@@ -26,7 +23,7 @@ def render_scoreboard() -> None:
                 gap: 1rem;
             }
             .name-label {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 font-weight: 700;
                 color: #5b1220;
             }
@@ -42,7 +39,7 @@ def render_scoreboard() -> None:
                 border-radius: 0.5rem;
             }
             .right-number {
-                font-size: 1.2rem;
+                font-size: 1.0rem;
                 font-weight: 700;
                 color: #000;
             }
