@@ -4,7 +4,6 @@ from pathlib import Path
 
 
 def render_scoreboard() -> None:
-    st.header("Scoreboard")
     try:
         base_path = Path(__file__).resolve().parents[1]
         scores_path = base_path / "scores.csv"
@@ -13,7 +12,6 @@ def render_scoreboard() -> None:
         scores_df = scores_df.sort_values("total_points", ascending=False).reset_index(drop=True)
         if not scores_df.empty:
             max_pts = scores_df.loc[0, "total_points"]
-            st.subheader("Points Overview")
             for row in scores_df.itertuples():
                 name: str = row.name
                 pts: int = row.total_points

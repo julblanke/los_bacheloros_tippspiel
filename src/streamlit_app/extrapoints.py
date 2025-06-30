@@ -48,7 +48,6 @@ EXTRA_EVENTS: List[Dict[str, Any]] = [
 
 
 def render_extrapoints() -> None:
-    st.header("Extrapoints")
     base_path = Path(__file__).resolve().parents[1]
     scores_file = base_path / "scores.csv"
     timeline_file = base_path / "timeline.csv"

@@ -13,7 +13,7 @@ IMG_LOUISA = "https://www.rtl.de/img/4370552/1747743628/c16_9/1024/louisa.webp"
 IMG_NADINE = "https://www.rtl.de/img/4370494/1747821737/c16_9/1024/87137-2jpg.webp"
 IMG_ISABELLE = "https://www.rtl.de/img/4370471/1747741941/c16_9/1024/bachelor-kandidatin-isabelle.webp"
 IMG_HANNAH = "https://www.rtl.de/img/4370542/1747743408/c16_9/1024/bachelor-kandidatin-hannah.webp"
-IMG_PLACEHOLDER = "https://i.pinimg.com/736x/55/a5/b3/55a5b3f247eba55ee4a1ccb8acc27035.jpg"
+IMG_PLACEHOLDER = "https://i.pinimg.com/736x/d3/4e/c5/d34ec52e51bef130bb5f881daed91a8d.jpg"
 
 
 TEAM_IMAGES: Dict[str, List[str]] = {
@@ -21,7 +21,7 @@ TEAM_IMAGES: Dict[str, List[str]] = {
     "Julian":   [IMG_ANN_KATHRIN, IMG_VIVIANE, IMG_PAULINA, IMG_CLARA, IMG_LEONIE, IMG_LOUISA],
     "Anja":     [IMG_LENA, IMG_CLARA, IMG_SEYMA, IMG_NADINE, IMG_AYLIN, IMG_ISABELLE],
     "Josy":     [IMG_SEYMA, IMG_LENA, IMG_AYLIN, IMG_VIVIANE, IMG_ISABELLE, IMG_NADINE],
-    "Luisa":    [IMG_ISABELLE, IMG_CLARA, IMG_VIVIANE, IMG_AYLIN, IMG_NADINE, IMG_LEONIE],
+    "Luisa":    [IMG_ISABELLE, IMG_LENA, IMG_VIVIANE, IMG_AYLIN, IMG_NADINE, IMG_LEONIE],
     "Marie":    [IMG_LENA, IMG_SEYMA, IMG_VIVIANE, IMG_NADINE, IMG_PAULINA, IMG_CLARA],
     "Mert":     [IMG_ANN_KATHRIN, IMG_AYLIN, IMG_HANNAH, IMG_LENA, IMG_NADINE, IMG_SEYMA],
     "Rabea":    [IMG_PLACEHOLDER] * 6,

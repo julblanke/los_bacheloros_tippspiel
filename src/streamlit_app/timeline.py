@@ -4,7 +4,6 @@ from pathlib import Path
 
 
 def render_timeline() -> None:
-    st.header("History")
     base_path = Path(__file__).resolve().parents[1]
     timeline_file = base_path / "timeline.csv"
     if not timeline_file.exists():

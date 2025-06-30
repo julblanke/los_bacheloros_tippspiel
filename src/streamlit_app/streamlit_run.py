@@ -10,7 +10,7 @@ def run_streamlit() -> None:
     st.set_page_config(page_title="Der Bachelor", layout="wide")
     st.markdown(main_style, unsafe_allow_html=True)
     st.markdown('<div class="banner"></div>', unsafe_allow_html=True)
-    tabs = st.tabs(["Scoreboard", "Timeline", "Extrapoints", "Teams"])
+    tabs = st.tabs(["Scoreboard", "History", "Extrapoints", "Teams"])
 
     with tabs[0]:
         render_scoreboard()
