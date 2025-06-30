@@ -68,7 +68,10 @@ def render_extrapoints() -> None:
     for i, ev in enumerate(EXTRA_EVENTS):
         container = cols1 if i < half else cols2
         rcols = container.columns([1, 1, 6])
-        rcols[0].write(ev["points"])
+        rcols[0].markdown(
+            f"<div class='bar-label'>{ev['points']}</div>",
+            unsafe_allow_html=True
+        )
         if rcols[1].button("Add", key=f"add_ev_{i}"):
             st.session_state["selected_event"] = i
         rcols[2].write(ev["event"])
