@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 
 IMG_LENA = "https://www.rtl.de/img/4370049/1747732080/c16_9/1024/bachelor-kandidatin-lena.webp"
@@ -16,15 +16,32 @@ IMG_HANNAH = "https://www.rtl.de/img/4370542/1747743408/c16_9/1024/bachelor-kand
 IMG_PLACEHOLDER = "https://i.pinimg.com/736x/55/a5/b3/55a5b3f247eba55ee4a1ccb8acc27035.jpg"
 
 
-TEAM_IMAGES: dict[str, List[str]] = {
+TEAM_IMAGES: Dict[str, List[str]] = {
     "Valentin": [IMG_LENA, IMG_CLARA, IMG_SEYMA, IMG_AYLIN, IMG_PAULINA, IMG_VIVIANE],
-    "Julian": [IMG_ANN_KATHRIN, IMG_VIVIANE, IMG_PAULINA, IMG_CLARA, IMG_LEONIE, IMG_LOUISA],
-    "Anja": [IMG_LENA, IMG_CLARA, IMG_SEYMA, IMG_NADINE, IMG_AYLIN, IMG_ISABELLE],
-    "Josy": [IMG_SEYMA, IMG_LENA, IMG_AYLIN, IMG_VIVIANE, IMG_ISABELLE, IMG_NADINE],
-    "Luisa": [IMG_ISABELLE, IMG_CLARA, IMG_VIVIANE, IMG_AYLIN, IMG_NADINE, IMG_LEONIE],
-    "Marie": [IMG_LENA, IMG_SEYMA, IMG_VIVIANE, IMG_NADINE, IMG_PAULINA, IMG_CLARA],
-    "Mert": [IMG_ANN_KATHRIN, IMG_AYLIN, IMG_HANNAH, IMG_LENA, IMG_NADINE, IMG_SEYMA],
-    "Rabea": [IMG_PLACEHOLDER] * 6
+    "Julian":   [IMG_ANN_KATHRIN, IMG_VIVIANE, IMG_PAULINA, IMG_CLARA, IMG_LEONIE, IMG_LOUISA],
+    "Anja":     [IMG_LENA, IMG_CLARA, IMG_SEYMA, IMG_NADINE, IMG_AYLIN, IMG_ISABELLE],
+    "Josy":     [IMG_SEYMA, IMG_LENA, IMG_AYLIN, IMG_VIVIANE, IMG_ISABELLE, IMG_NADINE],
+    "Luisa":    [IMG_ISABELLE, IMG_CLARA, IMG_VIVIANE, IMG_AYLIN, IMG_NADINE, IMG_LEONIE],
+    "Marie":    [IMG_LENA, IMG_SEYMA, IMG_VIVIANE, IMG_NADINE, IMG_PAULINA, IMG_CLARA],
+    "Mert":     [IMG_ANN_KATHRIN, IMG_AYLIN, IMG_HANNAH, IMG_LENA, IMG_NADINE, IMG_SEYMA],
+    "Rabea":    [IMG_PLACEHOLDER] * 6,
+}
+
+
+IMAGE_NAME_MAP: Dict[str, str] = {
+    IMG_LENA: "Lena",
+    IMG_CLARA: "Clara",
+    IMG_SEYMA: "Seyma",
+    IMG_AYLIN: "Aylin",
+    IMG_PAULINA: "Paulina",
+    IMG_VIVIANE: "Viviane",
+    IMG_ANN_KATHRIN: "Ann-Kathrin",
+    IMG_LEONIE: "Leonie",
+    IMG_LOUISA: "Louisa",
+    IMG_NADINE: "Nadine",
+    IMG_ISABELLE: "Isabelle",
+    IMG_HANNAH: "Hannah",
+    IMG_PLACEHOLDER: "TBA",
 }
 
 
